@@ -1,6 +1,9 @@
 
 <?php
 
+header("Access-Control-Allow-Origin: https://errors.infinityfree.net");
+header("Access-Control-Allow-Methods: GET");
+header("Access-Control-Allow-Headers: Content-Type");
 function fetchWeatherDataFromAPI($city)
 {
     $apiKey = "145c5f5cc7b6719079c76a215871e298";
