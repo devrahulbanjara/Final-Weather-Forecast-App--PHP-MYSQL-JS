@@ -43,7 +43,7 @@ document.addEventListener("DOMContentLoaded", ()=> {
 
       if (data.status === "success") {
 
-        localStorage.setItem(city, JSON.stringify(data));
+
         
         
         updateCurrentWeatherUI(data.current_weather);
