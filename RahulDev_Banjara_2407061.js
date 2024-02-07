@@ -2,8 +2,11 @@ document.addEventListener("DOMContentLoaded", () => {
   const searchBtn = document.querySelector(".fa-solid.fa-magnifying-glass");
   const cityInputField = document.querySelector(".weather__searchform");
 
-  searchBtn.addEventListener("click", () =>
-    fetchWeatherData(cityInputField.value.trim() || "Etawah"));
+  searchBtn.addEventListener("click", () => {
+    fetchWeatherData(cityInputField.value.trim() || "Etawah");
+    
+});
+
 
    document.querySelector(".title").addEventListener("click", () =>
     fetchWeatherData("Etawah"));
@@ -16,9 +19,8 @@ document.addEventListener("DOMContentLoaded", () => {
 
 
 
-
-
   async function fetchWeatherData(city) {
+    cityInputField.value = '';
     try {
       const storedData = localStorage.getItem(city);
       if (storedData) {
@@ -27,13 +29,13 @@ document.addEventListener("DOMContentLoaded", () => {
         console.log(`Shown ${city}'s data from local storage.`)
         updateHistoricalWeatherUI(data.historical_weather);
       } else {
-        const response = await fetch(`http://localhost/old-weather-app/main.php?city=${encodeURIComponent(city)}`);
+        const response = await fetch(`http://localhost/old-weather-app/RahulDev_Banjara_2407061.php?city=${encodeURIComponent(city)}`);
         const data = await response.json();
 
         if (data.status === "success") {
           localStorage.setItem(city, JSON.stringify(data));
           updateCurrentWeatherUI(data.current_weather);
-          console.log(`Shown ${city}'s data from php.`)
+          console.log(`Had to fetch from php to show ${city}'s data.`)
           updateHistoricalWeatherUI(data.historical_weather);
         } else {
           alert(`Error: ${data.message}`);
