@@ -6,6 +6,10 @@ document.addEventListener("DOMContentLoaded", () => {
     fetchWeatherData(cityInputField.value.trim() || "Etawah")
   );
 
+   document.querySelector(".title").addEventListener("click", () =>
+    fetchWeatherData("Etawah")
+  );
+
   cityInputField.addEventListener("keyup", (event) => {
     if (event.key === "Enter") {
       fetchWeatherData(cityInputField.value.trim() || "Etawah");
@@ -46,14 +50,8 @@ document.addEventListener("DOMContentLoaded", () => {
     } = currentWeather;
 
     const roundedTemperature = Math.round(temperature);
-
-    const weatherIcon = document.querySelector(".weather__icon img");
-    if (weatherIcon) {
-      weatherIcon.src = `https://raw.githubusercontent.com/yuvraaaj/openweathermap-api-icons/master/icons/${icon}.png`;
-    } else {
-      console.error("Weather icon element not found.");
-    }
-
+    
+    document.querySelector(".weather__icon img").src = `https://raw.githubusercontent.com/yuvraaaj/openweathermap-api-icons/master/icons/${icon}.png`;
     document.querySelector(".weather__city").textContent = city_name;
     document.querySelector(
       ".weather__temperature"

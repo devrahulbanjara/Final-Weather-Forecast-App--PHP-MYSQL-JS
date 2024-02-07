@@ -19,13 +19,16 @@ body {
   color: #fff;
   font-size: 1.5rem;
   font-weight: 600;
+  margin-top: 10px;
+  cursor: pointer;
 }
 
 .container {
-  background: url("https://c4.wallpaperflare.com/wallpaper/28/831/806/16-i-cloud-wallpaper-preview.jpg");
+  /* background: url("https://c4.wallpaperflare.com/wallpaper/28/831/806/16-i-cloud-wallpaper-preview.jpg"); */
   background-repeat: no-repeat;
+  background-color: rgb(49, 47, 44);
   background-size: cover;
-  color: #d2d2d2;
+  color: #ffffff;
   padding: 2rem;
   width: 60%;
   margin: 3rem auto;
@@ -175,6 +178,8 @@ input::placeholder {
   display: flex;
   flex-direction: column;
   align-items: center;
+  margin-left: 5px;
+  margin-right: 5px;
   background: rgba(76, 82, 105, 0.8);
   border-radius: 10px;
   width: 12%;
@@ -227,7 +232,7 @@ input::placeholder {
 
 footer {
   background-color: #4c5269; 
-  color: #d2d2d2; 
+  color: #ffffff; 
   text-align: center;
   padding: 10px;
   bottom: 0;
@@ -250,18 +255,18 @@ footer {
 
 @media (max-width: 400px) {
   .weather__info {
-    grid-template-columns: none; /* Removed */
+    grid-template-columns: none;
   }
 
   .weather__card i {
-    font-size: 0.8rem; /* Decreased icon size */
+    font-size: 0.8rem;
   }
 
   .weather__card p {
-    font-size: 7px; /* Decreased paragraph font size */
+    font-size: 7px;
   }
 
   .weather-pastdata .day {
-    font-size: 7px; /* Decreased font size for past data */
+    font-size: 7px;
   } 
 }
