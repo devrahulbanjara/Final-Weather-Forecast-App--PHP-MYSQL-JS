@@ -14,7 +14,11 @@ document.addEventListener("DOMContentLoaded", () => {
 
   async function fetchWeatherData(city) {
     try {
-      const response = await fetch(`http://localhost/weatherapp/RahulDev_Banjara_2407061.php?city=${encodeURIComponent(city)}`);
+      const response = await fetch(
+        `http://localhost/old-weather-app/main.php?city=${encodeURIComponent(
+          city
+        )}`
+      );
       const data = await response.json();
 
       if (data.status === "success") {
@@ -43,26 +47,40 @@ document.addEventListener("DOMContentLoaded", () => {
 
     const roundedTemperature = Math.round(temperature);
 
+    const weatherIcon = document.querySelector(".weather__icon img");
+    if (weatherIcon) {
+      weatherIcon.src = `https://raw.githubusercontent.com/yuvraaaj/openweathermap-api-icons/master/icons/${icon}.png`;
+    } else {
+      console.error("Weather icon element not found.");
+    }
+
     document.querySelector(".weather__city").textContent = city_name;
-    document.querySelector(".weather__temperature").textContent = `${roundedTemperature}°`;
+    document.querySelector(
+      ".weather__temperature"
+    ).textContent = `${roundedTemperature}°`;
     document.querySelector(".weather__forecast").textContent = description;
     document.querySelector(".weather__wind").textContent = `Wind: ${wind} m/s`;
-    document.querySelector(".weather__pressure").textContent = `Pressure: ${pressure} hPa`;
-    document.querySelector(".weather__humidity").textContent = `Humidity: ${humidity}%`;
-    document.querySelector(".weather__date").textContent = `Date: ${weather_date}`;
-    document.querySelector(".weather__icon img").src = `https://raw.githubusercontent.com/yuvraaaj/openweathermap-api-icons/master/icons/${icon}.png`;
+    document.querySelector(
+      ".weather__pressure"
+    ).textContent = `Pressure: ${pressure} hPa`;
+    document.querySelector(
+      ".weather__humidity"
+    ).textContent = `Humidity: ${humidity}%`;
+    document.querySelector(
+      ".weather__date"
+    ).textContent = `Date: ${weather_date}`;
   }
 
   function updateHistoricalWeatherUI(historicalWeather) {
     const pastWeatherDiv = document.querySelector(".weather-pastdata");
-    pastWeatherDiv.innerHTML = ""; // Clear existing data
+    pastWeatherDiv.innerHTML = "";
 
     historicalWeather.forEach((entry, index) => {
-      if (index < 7) { // Display only the last 7 days
+      if (index < 7) {
         const iconUrl = `https://raw.githubusercontent.com/yuvraaaj/openweathermap-api-icons/master/icons/${entry.icon}.png`;
         const weatherEntryDiv = document.createElement("div");
         weatherEntryDiv.classList.add("day");
-        weatherEntryDiv.classList.add(`day${index + 1}`); // Add day class
+        weatherEntryDiv.classList.add(`day${index + 1}`);
         weatherEntryDiv.innerHTML = `
           <div class="day-name">${entry.weather_date}</div>
           <div class="weather-icon"><img src="${iconUrl}" alt="Weather Icon"></div>

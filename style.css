@@ -1,10 +1,8 @@
 /* Student Name: Rahul Dev Banjara
    Student I.D: 2407061*/
 
-/* Google Fonts Import */
 @import url("https://fonts.googleapis.com/css2?family=Poppins&display=swap");
 
-/* Universal Styles */
 * {
   margin: 0;
   padding: 0;
@@ -12,9 +10,8 @@
   font-family: "Poppins", sans-serif;
 }
 
-/* Body background color */
 body {
-  background-color: #4c5269; /* Dark sky background color */
+  background-color: #4c5269;
   zoom: 90%;
 }
 
@@ -27,59 +24,59 @@ body {
   font-weight: 600;
 }
 
-/* Container Styles */
+
 .container {
   background: url("https://c4.wallpaperflare.com/wallpaper/28/831/806/16-i-cloud-wallpaper-preview.jpg");
   background-repeat: no-repeat;
   background-size: cover;
-  color: #d2d2d2; /* Light grey text color */
+  color: #d2d2d2;
   padding: 2rem;
   width: 60%;
   margin: 3rem auto;
   margin-bottom: 10px;
   margin-top: 1rem;
   border-radius: 10px;
-  border: 2px solid #d2d2d2; /* Light grey border color */
+  border: 2px solid #d2d2d2;
   transition: 0.3s ease-in-out;
 }
 
-/*Mouse over effect on the container div*/
+
 .container:hover {
   box-shadow: 0px 0px 20px rgba(255, 255, 255, 0.5);
 }
 
-/* Header Styles */
+
 .weather__header {
   display: flex;
   justify-content: space-between;
   align-items: center;
 }
 
-/* Input Styles */
+
 input {
   border: none;
-  background: rgba(76, 82, 105, 0.6); /* Semi-transparent grey background */
+  background: rgba(76, 82, 105, 0.6);
   outline: none;
   color: #fff;
   padding: 0.5rem 2.5rem;
   border-radius: 5px;
 }
 
-/* Mouse over effect on the input field */
+
 input:hover {
-  background: rgba(95, 103, 133, 0.6); /* Slightly lighter grey on hover */
+  background: rgba(95, 103, 133, 0.6);
 }
 
 input::placeholder {
   color: #fff;
 }
 
-/* Search Styles */
+
 .weather__search {
   position: relative;
 }
 
-/* Customizing icon */
+
 .weather__search i {
   position: absolute;
   left: 10px;
@@ -90,10 +87,10 @@ input::placeholder {
 }
 
 .weather__search i:hover {
-  color: rgba(95, 103, 133, 0.8); /* Lighter grey on hover */
+  color: rgba(95, 103, 133, 0.8);
 }
 
-/* Date and Time Styles */
+
 .weather__date,
 .weather__time {
   margin-bottom: 0rem;
@@ -106,13 +103,13 @@ input::placeholder {
   text-shadow: 0px 0px 10px rgba(255, 255, 255, 0.637);
 }
 
-/* Body Styles */
+
 .weather__body {
   text-align: center;
   margin-top: 3rem;
 }
 
-/* Forecast Styles */
+
 .weather__forecast {
   font-size: 1.5rem;
   padding: 0.5rem 1rem;
@@ -121,15 +118,14 @@ input::placeholder {
 }
 
 .weather__forecast:hover {
-  color: rgba(95, 103, 133, 0.8); /* Lighter grey on hover */
+  color: rgba(95, 103, 133, 0.8);
 }
 
-/* Icon Styles */
+
 .weather__icon img {
   width: 100px;
 }
 
-/* Temperature Styles */
 .weather__temperature {
   font-size: 4em;
   margin-left: 20px;
@@ -137,7 +133,7 @@ input::placeholder {
 }
 
 .weather__temperature:hover {
-  color: rgba(95, 103, 133, 0.8); /* Lighter grey on hover */
+  color: rgba(95, 103, 133, 0.8);
 }
 
 .weather__city {
@@ -158,7 +154,7 @@ input::placeholder {
   margin-top: 15px;
   display: flex;
   align-items: center;
-  background: rgba(76, 82, 105, 0.8); /* Semi-transparent grey background */
+  background: rgba(76, 82, 105, 0.8);
   padding: 1rem;
   border-radius: 10px;
   width: 20%;
@@ -166,7 +162,7 @@ input::placeholder {
 }
 
 .weather__card:hover {
-  background: rgba(95, 103, 133, 0.8); /* Lighter grey on hover */
+  background: rgba(95, 103, 133, 0.8);
   transform: scale(1.05);
 }
 
@@ -183,11 +179,9 @@ input::placeholder {
   font-size: 14px;
 }
 
-/* Weather Past Data Styles */
 .weather-pastdata {
   margin-top: 15px;
   display: flex;
-  justify-content: space-around;
   margin-top: 2rem;
 }
 
@@ -195,7 +189,7 @@ input::placeholder {
   display: flex;
   flex-direction: column;
   align-items: center;
-  background: rgba(76, 82, 105, 0.8); /* Semi-transparent grey background */
+  background: rgba(76, 82, 105, 0.8);
   border-radius: 10px;
   width: 12%;
   padding: 1rem;
@@ -203,7 +197,7 @@ input::placeholder {
 }
 
 .day:hover {
-  background: rgba(95, 103, 133, 0.8); /* Lighter grey on hover */
+  background: rgba(95, 103, 133, 0.8);
   transform: scale(1.05);
 }
 
@@ -222,10 +216,18 @@ input::placeholder {
 }
 
 .weather-pastdata {
-  flex-direction: row-reverse;
+  display: flex;
 }
 
-/* Responsive Styles for Weather Past Data */
+.day {
+  flex: 1;
+  padding: 5px;
+  border: 0.2px solid #565454;
+  margin-right: 5px;
+  height: 180px;
+  max-width:170px;
+}
+
 @media (max-width: 936px) {
   .weather-pastdata {
     flex-wrap: wrap;
@@ -238,15 +240,15 @@ input::placeholder {
 }
 
 footer.copyright {
-  background-color: #4c5269; /* Dark sky background color */
-  color: #d2d2d2; /* Light grey text color */
+  background-color: #4c5269; 
+  color: #d2d2d2; 
   text-align: center;
   padding: 10px;
   bottom: 0;
   width: 100%;
 }
 
-/* Responsive Styles */
+
 @media (max-width: 936px) {
   .container {
     width: 90%;
