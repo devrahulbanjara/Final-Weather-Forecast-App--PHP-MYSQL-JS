@@ -1,6 +1,3 @@
-/* Student Name: Rahul Dev Banjara
-   Student I.D: 2407061*/
-
 @import url("https://fonts.googleapis.com/css2?family=Poppins&display=swap");
 
 * {
@@ -24,7 +21,6 @@ body {
   font-weight: 600;
 }
 
-
 .container {
   background: url("https://c4.wallpaperflare.com/wallpaper/28/831/806/16-i-cloud-wallpaper-preview.jpg");
   background-repeat: no-repeat;
@@ -40,18 +36,15 @@ body {
   transition: 0.3s ease-in-out;
 }
 
-
 .container:hover {
   box-shadow: 0px 0px 20px rgba(255, 255, 255, 0.5);
 }
-
 
 .weather__header {
   display: flex;
   justify-content: space-between;
   align-items: center;
 }
-
 
 input {
   border: none;
@@ -62,7 +55,6 @@ input {
   border-radius: 5px;
 }
 
-
 input:hover {
   background: rgba(95, 103, 133, 0.6);
 }
@@ -71,11 +63,9 @@ input::placeholder {
   color: #fff;
 }
 
-
 .weather__search {
   position: relative;
 }
-
 
 .weather__search i {
   position: absolute;
@@ -90,7 +80,6 @@ input::placeholder {
   color: rgba(95, 103, 133, 0.8);
 }
 
-
 .weather__date,
 .weather__time {
   margin-bottom: 0rem;
@@ -103,12 +92,10 @@ input::placeholder {
   text-shadow: 0px 0px 10px rgba(255, 255, 255, 0.637);
 }
 
-
 .weather__body {
   text-align: center;
   margin-top: 3rem;
 }
-
 
 .weather__forecast {
   font-size: 1.5rem;
@@ -120,7 +107,6 @@ input::placeholder {
 .weather__forecast:hover {
   color: rgba(95, 103, 133, 0.8);
 }
-
 
 .weather__icon img {
   width: 100px;
@@ -239,7 +225,7 @@ input::placeholder {
   }
 }
 
-footer.copyright {
+footer {
   background-color: #4c5269; 
   color: #d2d2d2; 
   text-align: center;
@@ -247,7 +233,6 @@ footer.copyright {
   bottom: 0;
   width: 100%;
 }
-
 
 @media (max-width: 936px) {
   .container {
@@ -267,4 +252,16 @@ footer.copyright {
   .weather__info {
     grid-template-columns: none;
   }
+
+  .weather__card i {
+    font-size: 0.8rem;
+  }
+
+  .weather__card p {
+    font-size: 7px;
+  }
+
+  .weather-pastdata .day{
+    font-size: 7px;
+  } 
 }
