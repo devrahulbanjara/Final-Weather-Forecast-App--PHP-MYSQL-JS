@@ -1,7 +1,6 @@
 document.addEventListener("DOMContentLoaded", () => {
   const searchBtn = document.querySelector(".fa-solid.fa-magnifying-glass");
-  const cityInputField = document.querySelector(".weather__searchform input");
-  const pastWeatherDiv = document.querySelector(".weather-pastdata");
+  const cityInputField = document.querySelector(".weather__searchform");
 
   searchBtn.addEventListener("click", () =>
     fetchWeatherData(cityInputField.value.trim() || "Etawah")
@@ -15,15 +14,12 @@ document.addEventListener("DOMContentLoaded", () => {
 
   async function fetchWeatherData(city) {
     try {
-      const apiUrl = `http://localhost/weatherapp/RahulDev_Banjara_2407061.php?city=${city}`;
-      const response = await fetch(apiUrl);
+      const response = await fetch(`http://localhost/weatherapp/RahulDev_Banjara_2407061.php?city=${encodeURIComponent(city)}`);
       const data = await response.json();
 
       if (data.status === "success") {
         updateCurrentWeatherUI(data.current_weather);
         updateHistoricalWeatherUI(data.historical_weather);
-      } else if (data.message === "city not found") {
-        alert("Invalid city name. Please enter a valid city.");
       } else {
         alert(`Error: ${data.message}`);
       }
@@ -58,18 +54,22 @@ document.addEventListener("DOMContentLoaded", () => {
   }
 
   function updateHistoricalWeatherUI(historicalWeather) {
+    const pastWeatherDiv = document.querySelector(".weather-pastdata");
     pastWeatherDiv.innerHTML = ""; // Clear existing data
-    historicalWeather.forEach((entry) => {
-      const iconUrl = `https://raw.githubusercontent.com/yuvraaaj/openweathermap-api-icons/master/icons/${entry.icon}.png`;
-      const day = entry.weather_date.split(',')[0]; // Extracting only the day from the full date
-      const weatherEntryDiv = document.createElement("div");
-      weatherEntryDiv.classList.add("day");
-      weatherEntryDiv.innerHTML = `
-        <div class="day-name">${day}</div>
-        <div class="weather-icon"><img src="${iconUrl}" alt="Weather Icon"></div>
-        <div class="temperature">${Math.round(entry.temperature)}°</div>
-        <div class="weather-condition">${entry.description}</div>`;
-      pastWeatherDiv.appendChild(weatherEntryDiv); // Append each weather entry to the past weather div
+
+    historicalWeather.forEach((entry, index) => {
+      if (index < 7) { // Display only the last 7 days
+        const iconUrl = `https://raw.githubusercontent.com/yuvraaaj/openweathermap-api-icons/master/icons/${entry.icon}.png`;
+        const weatherEntryDiv = document.createElement("div");
+        weatherEntryDiv.classList.add("day");
+        weatherEntryDiv.classList.add(`day${index + 1}`); // Add day class
+        weatherEntryDiv.innerHTML = `
+          <div class="day-name">${entry.weather_date}</div>
+          <div class="weather-icon"><img src="${iconUrl}" alt="Weather Icon"></div>
+          <div class="temperature">${Math.round(entry.temperature)}°</div>
+          <div class="weather-condition">${entry.description}</div>`;
+        pastWeatherDiv.appendChild(weatherEntryDiv);
+      }
     });
   }
 
