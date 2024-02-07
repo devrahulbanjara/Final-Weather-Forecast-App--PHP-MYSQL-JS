@@ -1,0 +1,268 @@
+/* Student Name: Rahul Dev Banjara
+   Student I.D: 2407061*/
+
+/* Google Fonts Import */
+@import url("https://fonts.googleapis.com/css2?family=Poppins&display=swap");
+
+/* Universal Styles */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Poppins", sans-serif;
+}
+
+/* Body background color */
+body {
+  background-color: #4c5269; /* Dark sky background color */
+  zoom: 90%;
+}
+
+.title {
+  text-align: center;
+  height: 5vh;
+  padding-top: 5px;
+  color: #fff;
+  font-size: 1.5rem;
+  font-weight: 600;
+}
+
+/* Container Styles */
+.container {
+  background: url("https://c4.wallpaperflare.com/wallpaper/28/831/806/16-i-cloud-wallpaper-preview.jpg");
+  background-repeat: no-repeat;
+  background-size: cover;
+  color: #d2d2d2; /* Light grey text color */
+  padding: 2rem;
+  width: 60%;
+  margin: 3rem auto;
+  margin-bottom: 10px;
+  margin-top: 1rem;
+  border-radius: 10px;
+  border: 2px solid #d2d2d2; /* Light grey border color */
+  transition: 0.3s ease-in-out;
+}
+
+/*Mouse over effect on the container div*/
+.container:hover {
+  box-shadow: 0px 0px 20px rgba(255, 255, 255, 0.5);
+}
+
+/* Header Styles */
+.weather__header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+/* Input Styles */
+input {
+  border: none;
+  background: rgba(76, 82, 105, 0.6); /* Semi-transparent grey background */
+  outline: none;
+  color: #fff;
+  padding: 0.5rem 2.5rem;
+  border-radius: 5px;
+}
+
+/* Mouse over effect on the input field */
+input:hover {
+  background: rgba(95, 103, 133, 0.6); /* Slightly lighter grey on hover */
+}
+
+input::placeholder {
+  color: #fff;
+}
+
+/* Search Styles */
+.weather__search {
+  position: relative;
+}
+
+/* Customizing icon */
+.weather__search i {
+  position: absolute;
+  left: 10px;
+  top: 10px;
+  font-size: 15px;
+  color: #fff;
+  cursor: pointer;
+}
+
+.weather__search i:hover {
+  color: rgba(95, 103, 133, 0.8); /* Lighter grey on hover */
+}
+
+/* Date and Time Styles */
+.weather__date,
+.weather__time {
+  margin-bottom: 0rem;
+  font-size: 17px;
+  transition: 0.2s ease-in-out;
+}
+
+.weather__time:hover,
+.weather__date:hover {
+  text-shadow: 0px 0px 10px rgba(255, 255, 255, 0.637);
+}
+
+/* Body Styles */
+.weather__body {
+  text-align: center;
+  margin-top: 3rem;
+}
+
+/* Forecast Styles */
+.weather__forecast {
+  font-size: 1.5rem;
+  padding: 0.5rem 1rem;
+  border-radius: 30px;
+  transition: 0.3s ease-in-out;
+}
+
+.weather__forecast:hover {
+  color: rgba(95, 103, 133, 0.8); /* Lighter grey on hover */
+}
+
+/* Icon Styles */
+.weather__icon img {
+  width: 100px;
+}
+
+/* Temperature Styles */
+.weather__temperature {
+  font-size: 4em;
+  margin-left: 20px;
+  transition: color 0.3s ease-in-out;
+}
+
+.weather__temperature:hover {
+  color: rgba(95, 103, 133, 0.8); /* Lighter grey on hover */
+}
+
+.weather__city {
+  margin-bottom: 10px;
+}
+
+.country {
+  font-size: 1.5em;
+}
+
+.weather__info {
+  display: flex;
+  justify-content: space-around;
+  margin: 0 auto;
+}
+
+.weather__card {
+  margin-top: 15px;
+  display: flex;
+  align-items: center;
+  background: rgba(76, 82, 105, 0.8); /* Semi-transparent grey background */
+  padding: 1rem;
+  border-radius: 10px;
+  width: 20%;
+  transition: 0.3s ease-in-out;
+}
+
+.weather__card:hover {
+  background: rgba(95, 103, 133, 0.8); /* Lighter grey on hover */
+  transform: scale(1.05);
+}
+
+.weather__card i {
+  font-size: 1.8rem;
+  margin-right: 1rem;
+}
+
+.weather__card div {
+  flex-grow: 1;
+}
+
+.weather__card p {
+  font-size: 14px;
+}
+
+/* Weather Past Data Styles */
+.weather-pastdata {
+  margin-top: 15px;
+  display: flex;
+  justify-content: space-around;
+  margin-top: 2rem;
+}
+
+.day {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background: rgba(76, 82, 105, 0.8); /* Semi-transparent grey background */
+  border-radius: 10px;
+  width: 12%;
+  padding: 1rem;
+  transition: 0.3s ease-in-out;
+}
+
+.day:hover {
+  background: rgba(95, 103, 133, 0.8); /* Lighter grey on hover */
+  transform: scale(1.05);
+}
+
+.day > .day-name {
+  font-weight: 600;
+  font-size: 1.1rem;
+}
+
+.day > div {
+  font-size: 16px;
+  margin-bottom: 0.5rem;
+}
+
+.weather-icon img {
+  width: 50px;
+}
+
+.weather-pastdata {
+  flex-direction: row-reverse;
+}
+
+/* Responsive Styles for Weather Past Data */
+@media (max-width: 936px) {
+  .weather-pastdata {
+    flex-wrap: wrap;
+  }
+
+  .day {
+    width: 30%;
+    margin-bottom: 1rem;
+  }
+}
+
+footer.copyright {
+  background-color: #4c5269; /* Dark sky background color */
+  color: #d2d2d2; /* Light grey text color */
+  text-align: center;
+  padding: 10px;
+  bottom: 0;
+  width: 100%;
+}
+
+/* Responsive Styles */
+@media (max-width: 936px) {
+  .container {
+    width: 90%;
+  }
+
+  .weather__header {
+    flex-direction: column;
+  }
+
+  .weather__units {
+    margin-top: 1rem;
+  }
+}
+
+@media (max-width: 400px) {
+  .weather__info {
+    grid-template-columns: none;
+  }
+}
