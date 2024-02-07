@@ -1,9 +1,9 @@
 document.addEventListener("DOMContentLoaded", () => {
-  const submitBtn = document.getElementById("submit-btn");
-  const cityInputField = document.getElementById("weather__searchform");
+  const searchBtn = document.querySelector(".fa-solid.fa-magnifying-glass");
+  const cityInputField = document.querySelector(".weather__searchform input");
   const pastWeatherDiv = document.querySelector(".weather-pastdata");
 
-  submitBtn.addEventListener("click", () =>
+  searchBtn.addEventListener("click", () =>
     fetchWeatherData(cityInputField.value.trim() || "Etawah")
   );
 
@@ -15,9 +15,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
   async function fetchWeatherData(city) {
     try {
-      const apiUrl = `http://localhost/weatherapp/RahulDev_Banjara_2407061.php?city=${encodeURIComponent(
-        city
-      )}`;
+      const apiUrl = `http://localhost/weatherapp/RahulDev_Banjara_2407061.php?city=${city}`;
       const response = await fetch(apiUrl);
       const data = await response.json();
 
