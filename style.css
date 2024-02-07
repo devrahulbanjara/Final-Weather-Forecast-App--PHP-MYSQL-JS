@@ -250,18 +250,18 @@ footer {
 
 @media (max-width: 400px) {
   .weather__info {
-    grid-template-columns: none;
+    grid-template-columns: none; /* Removed */
   }
 
   .weather__card i {
-    font-size: 0.8rem;
+    font-size: 0.8rem; /* Decreased icon size */
   }
 
   .weather__card p {
-    font-size: 7px;
+    font-size: 7px; /* Decreased paragraph font size */
   }
 
-  .weather-pastdata .day{
-    font-size: 7px;
+  .weather-pastdata .day {
+    font-size: 7px; /* Decreased font size for past data */
   } 
 }
