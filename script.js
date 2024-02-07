@@ -3,12 +3,10 @@ document.addEventListener("DOMContentLoaded", () => {
   const cityInputField = document.querySelector(".weather__searchform");
 
   searchBtn.addEventListener("click", () =>
-    fetchWeatherData(cityInputField.value.trim() || "Etawah")
-  );
+    fetchWeatherData(cityInputField.value.trim() || "Etawah"));
 
    document.querySelector(".title").addEventListener("click", () =>
-    fetchWeatherData("Etawah")
-  );
+    fetchWeatherData("Etawah"));
 
   cityInputField.addEventListener("keyup", (event) => {
     if (event.key === "Enter") {
@@ -16,26 +14,38 @@ document.addEventListener("DOMContentLoaded", () => {
     }
   });
 
+
+
+
+
   async function fetchWeatherData(city) {
     try {
-      const response = await fetch(
-        `http://localhost/old-weather-app/main.php?city=${encodeURIComponent(
-          city
-        )}`
-      );
-      const data = await response.json();
-
-      if (data.status === "success") {
+      const storedData = localStorage.getItem(city);
+      if (storedData) {
+        const data = JSON.parse(storedData);
         updateCurrentWeatherUI(data.current_weather);
+        console.log(`Shown ${city}'s data from local storage.`)
         updateHistoricalWeatherUI(data.historical_weather);
       } else {
-        alert(`Error: ${data.message}`);
+        const response = await fetch(`http://localhost/old-weather-app/main.php?city=${encodeURIComponent(city)}`);
+        const data = await response.json();
+
+        if (data.status === "success") {
+          localStorage.setItem(city, JSON.stringify(data));
+          updateCurrentWeatherUI(data.current_weather);
+          console.log(`Shown ${city}'s data from php.`)
+          updateHistoricalWeatherUI(data.historical_weather);
+        } else {
+          alert(`Error: ${data.message}`);
+        }
       }
     } catch (error) {
       console.error("Error fetching data:", error);
       alert(`An error occurred while fetching data for ${city}.`);
     }
   }
+
+
 
   function updateCurrentWeatherUI(currentWeather) {
     const {
@@ -68,6 +78,9 @@ document.addEventListener("DOMContentLoaded", () => {
       ".weather__date"
     ).textContent = `Date: ${weather_date}`;
   }
+
+
+
 
   function updateHistoricalWeatherUI(historicalWeather) {
     const pastWeatherDiv = document.querySelector(".weather-pastdata");
