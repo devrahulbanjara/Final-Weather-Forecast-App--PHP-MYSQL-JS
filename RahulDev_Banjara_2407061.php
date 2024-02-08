@@ -35,7 +35,8 @@ function getWeatherDataFromDatabase($conn, $city)
 
 function getHistoricalWeatherData($conn, $city)
 {
-    $historyQuery = "SELECT * FROM weather_details WHERE city_name='$city' ORDER BY weather_date DESC LIMIT 7";
+    $today = date("Y-m-d");
+    $historyQuery = "SELECT * FROM weather_details WHERE city_name='$city' AND weather_date < '$today' ORDER BY weather_date DESC LIMIT 7";
     $historyResult = $conn->query($historyQuery);
 
     $historyData = [];
@@ -51,6 +52,8 @@ function getHistoricalWeatherData($conn, $city)
 
     return $historyData;
 }
+
+
 
 function updateDatabaseWithAPIData($conn, $city, $apiData, $currentHourInNepal)
 {
