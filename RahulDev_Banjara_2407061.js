@@ -21,12 +21,12 @@ document.addEventListener("DOMContentLoaded", () => {
     try {
       const storedData = JSON.parse(localStorage.getItem(city));
 
-      //if city data exists in local storage and it is today's date
+  
       if (storedData && isToday(storedData.current_weather.weather_date)) {
         updateCurrentWeatherUI(storedData.current_weather);
         console.log(`Shown ${city}'s data from local storage.`);
         updateHistoricalWeatherUI(storedData.historical_weather);
-        //if city data doesnt exist in local storage
+
       } else {
         const response = await fetch(
           `http://localhost/old-weather-app/RahulDev_Banjara_2407061.php?city=${encodeURIComponent(
