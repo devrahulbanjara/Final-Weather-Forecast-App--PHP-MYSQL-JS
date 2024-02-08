@@ -37,9 +37,10 @@ document.addEventListener("DOMContentLoaded", () => {
 
         if (data.status === "success") {
           localStorage.setItem(city, JSON.stringify(data));
-          updateCurrentWeatherUI(data.current_weather);
+          const storedData = JSON.parse(localStorage.getItem(city));
+          updateCurrentWeatherUI(storedData.current_weather);
+          updateHistoricalWeatherUI(storedData.historical_weather);
           console.log(`Had to fetch from PHP to show ${city}'s data.`);
-          updateHistoricalWeatherUI(data.historical_weather);
         } else {
           alert(`Error: ${data.message}`);
         }
