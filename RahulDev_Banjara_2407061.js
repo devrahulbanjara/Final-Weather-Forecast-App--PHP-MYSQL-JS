@@ -4,12 +4,11 @@ document.addEventListener("DOMContentLoaded", () => {
 
   searchBtn.addEventListener("click", () => {
     fetchWeatherData(cityInputField.value.trim() || "Etawah");
-    
-});
+  });
 
-
-   document.querySelector(".title").addEventListener("click", () =>
-    fetchWeatherData("Etawah"));
+  document.querySelector(".title").addEventListener("click", () =>
+    fetchWeatherData("Etawah")
+  );
 
   cityInputField.addEventListener("keyup", (event) => {
     if (event.key === "Enter") {
@@ -17,25 +16,29 @@ document.addEventListener("DOMContentLoaded", () => {
     }
   });
 
-
-
   async function fetchWeatherData(city) {
-    cityInputField.value = '';
+    cityInputField.value = "";
     try {
-      const storedData = localStorage.getItem(city);
-      if (storedData) {
-        const data = JSON.parse(storedData);
-        updateCurrentWeatherUI(data.current_weather);
-        console.log(`Shown ${city}'s data from local storage.`)
-        updateHistoricalWeatherUI(data.historical_weather);
+      const storedData = JSON.parse(localStorage.getItem(city));
+
+      //if city data exists in local storage and it is today's date
+      if (storedData && isToday(storedData.current_weather.weather_date)) {
+        updateCurrentWeatherUI(storedData.current_weather);
+        console.log(`Shown ${city}'s data from local storage.`);
+        updateHistoricalWeatherUI(storedData.historical_weather);
+        //if city data doesnt exist in local storage
       } else {
-        const response = await fetch(`http://localhost/old-weather-app/RahulDev_Banjara_2407061.php?city=${encodeURIComponent(city)}`);
+        const response = await fetch(
+          `http://localhost/old-weather-app/RahulDev_Banjara_2407061.php?city=${encodeURIComponent(
+            city
+          )}`
+        );
         const data = await response.json();
 
         if (data.status === "success") {
           localStorage.setItem(city, JSON.stringify(data));
           updateCurrentWeatherUI(data.current_weather);
-          console.log(`Had to fetch from php to show ${city}'s data.`)
+          console.log(`Had to fetch from PHP to show ${city}'s data.`);
           updateHistoricalWeatherUI(data.historical_weather);
         } else {
           alert(`Error: ${data.message}`);
@@ -47,7 +50,15 @@ document.addEventListener("DOMContentLoaded", () => {
     }
   }
 
-
+  function isToday(dateString) {
+    const today = new Date();
+    const date = new Date(dateString);
+    return (
+      date.getDate() === today.getDate() &&
+      date.getMonth() === today.getMonth() &&
+      date.getFullYear() === today.getFullYear()
+    );
+  }
 
   function updateCurrentWeatherUI(currentWeather) {
     const {
@@ -62,7 +73,7 @@ document.addEventListener("DOMContentLoaded", () => {
     } = currentWeather;
 
     const roundedTemperature = Math.round(temperature);
-    
+
     document.querySelector(".weather__icon img").src = `https://raw.githubusercontent.com/yuvraaaj/openweathermap-api-icons/master/icons/${icon}.png`;
     document.querySelector(".weather__city").textContent = city_name;
     document.querySelector(
@@ -80,9 +91,6 @@ document.addEventListener("DOMContentLoaded", () => {
       ".weather__date"
     ).textContent = `Date: ${weather_date}`;
   }
-
-
-
 
   function updateHistoricalWeatherUI(historicalWeather) {
     const pastWeatherDiv = document.querySelector(".weather-pastdata");
