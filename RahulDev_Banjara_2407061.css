@@ -8,8 +8,7 @@
 }
 
 body {
-  background:url("https://images.pexels.com/photos/1118873/pexels-photo-1118873.jpeg?cs=srgb&dl=pexels-johannes-plenio-1118873.jpg&fm=jpg");
-  background-size: cover;
+  background-color: #4c5269;
 }
 
 .title {
@@ -24,8 +23,8 @@ body {
 }
 
 .container {
-  background-color: rgba(208, 209, 173, 0); /* Light Yellow */
-  color: #ffffff; /* Dark Gray */
+  background-color: rgb(49, 47, 44);
+  color: #ffffff;
   padding: 2rem;
   width: 60%;
   margin: 3rem auto;
@@ -35,7 +34,7 @@ body {
 }
 
 .container:hover {
-  box-shadow: 0px 0px 20px rgba(0, 0, 0, 0.2); /* Light Gray */
+  box-shadow: 0px 0px 20px rgba(255, 255, 255, 0.5);
 }
 
 .weather__header {
@@ -46,21 +45,20 @@ body {
 
 input {
   border: none;
-  background: rgba(255, 255, 255, 0.8); /* White */
+  background: rgba(76, 82, 105, 0.6);
   outline: none;
-  color: #444; /* Dark Gray */
+  color: #fff;
   padding: 0.5rem 2.5rem;
   border-radius: 5px;
 }
 
 input:hover {
-  background: rgba(255, 255, 255, 0.9); /* Off-White */
+  background: rgba(95, 103, 133, 0.6);
 }
 
 input::placeholder {
-  color: #777; /* Light Gray */
+  color: #fff;
 }
-
 .weather__search {
   position: relative;
 }
@@ -70,12 +68,12 @@ input::placeholder {
   left: 10px;
   top: 10px;
   font-size: 15px;
-  color: #444; /* Dark Gray */
+  color:#fff;
   cursor: pointer;
 }
 
 .weather__search i:hover {
-  color: #555; /* Gray */
+  color: rgba(95, 103, 133, 0.8);
 }
 
 .weather__date,
@@ -87,7 +85,7 @@ input::placeholder {
 
 .weather__time:hover,
 .weather__date:hover {
-  text-shadow: 0px 0px 10px rgba(0, 0, 0, 0.5); /* Dark Gray */
+  text-shadow: 0px 0px 10px rgba(255, 255, 255, 0.637);
 }
 
 .weather__body {
@@ -101,19 +99,22 @@ input::placeholder {
   border-radius: 30px;
 }
 
-
-
 .weather__icon img {
   width: 100px;
+  transition: 0.3s ease-in-out;
 }
-
+.weather__icon img:hover {
+  transform: scale(1.15);
+}
 .weather__temperature {
   font-size: 4em;
   margin-left: 20px;
+
 }
 
 .weather__city {
   margin-bottom: 10px;
+  font-size: 50px;
 }
 
 .weather__country {
@@ -130,7 +131,7 @@ input::placeholder {
   margin-top: 15px;
   display: flex;
   align-items: center;
-  background: rgba(92, 92, 92, 0.9); /* Off-White */
+  background: rgba(76, 82, 105, 0.8);
   padding: 1rem;
   border-radius: 10px;
   width: 20%;
@@ -138,8 +139,7 @@ input::placeholder {
 }
 
 .weather__card:hover {
-  background: rgba(255, 255, 255, 1); /* White */
-  color:black;
+  background: rgba(95, 103, 133, 0.8);
   transform: scale(1.05);
 }
 
@@ -169,7 +169,7 @@ input::placeholder {
   align-items: center;
   margin-left: 5px;
   margin-right: 5px;
-  background: rgba(92, 92, 92, 0.9); /* Off-White */
+  background: rgba(76, 82, 105, 0.8);
   border-radius: 10px;
   width: 12%;
   padding: 1rem;
@@ -177,8 +177,7 @@ input::placeholder {
 }
 
 .day:hover {
-  background: rgba(255, 255, 255, 1); /* White */
-  color:black;
+  background: rgba(76, 82, 105, 0.8);
   transform: scale(1.05);
 }
 
