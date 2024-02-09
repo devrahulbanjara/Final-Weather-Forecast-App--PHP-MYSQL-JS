@@ -27,8 +27,8 @@ document.addEventListener("DOMContentLoaded", () => {
         timediff(storedData.current_weather.data_stored_hour)
       ) {
         updateCurrentWeatherUI(storedData.current_weather);
-        console.log(`Shown ${city}'s data from local storage.`);
         updateHistoricalWeatherUI(storedData.historical_weather);
+        console.log(`Shown ${city}'s data from local storage.`);
       } else {
         const response = await fetch(
           `http://localhost/old-weather-app/RahulDev_Banjara_2407061.php?city=${city}`
@@ -36,11 +36,14 @@ document.addEventListener("DOMContentLoaded", () => {
         const data = await response.json();
 
         if (data.status === "success") {
+          const currentTime = new Date().getTime();
+          data.current_weather.data_stored_hour = Math.floor(
+            currentTime / (1000 * 60 * 60)
+          ); // Store current hour
           localStorage.setItem(city, JSON.stringify(data));
-          const storedData = JSON.parse(localStorage.getItem(city));
-          updateCurrentWeatherUI(storedData.current_weather);
-          updateHistoricalWeatherUI(storedData.historical_weather);
-          console.log(`Had to fetch from PHP to show ${city}'s data.`);
+          updateCurrentWeatherUI(data.current_weather);
+          updateHistoricalWeatherUI(data.historical_weather);
+          console.log(`Stored ${city}'s data in local storage from Database.`);
         } else {
           alert(`Error: ${data.message}`);
         }
@@ -79,6 +82,7 @@ document.addEventListener("DOMContentLoaded", () => {
       city_name,
       temperature,
       description,
+      country,
       humidity,
       wind,
       pressure,
@@ -86,12 +90,23 @@ document.addEventListener("DOMContentLoaded", () => {
       icon,
     } = currentWeather;
 
+    // Check if country property exists
+    function convertCountryCode(country) {
+      // Initialize Internationalization API for region names
+      let regionNames = new Intl.DisplayNames(["en"], { type: "region" });
+      return regionNames.of(country);
+    }
+    // This will log the country name or "Unknown" if country is null
+
     const roundedTemperature = Math.round(temperature);
 
     document.querySelector(
       ".weather__icon img"
     ).src = `https://raw.githubusercontent.com/yuvraaaj/openweathermap-api-icons/master/icons/${icon}.png`;
     document.querySelector(".weather__city").textContent = city_name;
+    document.querySelector(".weather__country").textContent =
+      convertCountryCode(country); // Display the country name
+
     document.querySelector(
       ".weather__temperature"
     ).textContent = `${roundedTemperature}°`;

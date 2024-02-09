@@ -172,6 +172,7 @@ input::placeholder {
   margin-top: 15px;
   display: flex;
   margin-top: 2rem;
+  margin-left:50px;
 }
 
 .day {
