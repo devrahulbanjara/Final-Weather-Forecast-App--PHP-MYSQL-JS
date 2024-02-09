@@ -6,9 +6,9 @@ document.addEventListener("DOMContentLoaded", () => {
     fetchWeatherData(cityInputField.value.trim() || "Etawah");
   });
 
-  document.querySelector(".title").addEventListener("click", () =>
-    fetchWeatherData("Etawah")
-  );
+  document
+    .querySelector(".title")
+    .addEventListener("click", () => fetchWeatherData("Etawah"));
 
   cityInputField.addEventListener("keyup", (event) => {
     if (event.key === "Enter") {
@@ -21,15 +21,14 @@ document.addEventListener("DOMContentLoaded", () => {
     try {
       const storedData = JSON.parse(localStorage.getItem(city));
 
-  
-      if (storedData && isToday(storedData.current_weather.weather_date)) {
+      if (storedData && isToday(storedData.current_weather.weather_date) && timediff(storedData.current_weather.data_stored_hour)) {
         updateCurrentWeatherUI(storedData.current_weather);
         console.log(`Shown ${city}'s data from local storage.`);
         updateHistoricalWeatherUI(storedData.historical_weather);
-
       } else {
         const response = await fetch(
-          `http://localhost/old-weather-app/RahulDev_Banjara_2407061.php?city=${city}`);
+          `http://localhost/old-weather-app/RahulDev_Banjara_2407061.php?city=${city}`
+        );
         const data = await response.json();
 
         if (data.status === "success") {
@@ -46,6 +45,18 @@ document.addEventListener("DOMContentLoaded", () => {
       console.error("Error fetching data:", error);
       alert(`An error occurred while fetching data for ${city}.`);
     }
+  }
+
+  function timediff(datainserthours) {
+    const now = new Date();
+    const currentHour = now.getHours();
+    console.log("Current hour: " + currentHour);
+    if(currentHour-datainserthours < 2){
+      console.log("True bhai true")
+      return true;
+    }
+    else{console.log("False bhai true")
+    return false;}
   }
 
   function isToday(dateString) {
@@ -72,7 +83,9 @@ document.addEventListener("DOMContentLoaded", () => {
 
     const roundedTemperature = Math.round(temperature);
 
-    document.querySelector(".weather__icon img").src = `https://raw.githubusercontent.com/yuvraaaj/openweathermap-api-icons/master/icons/${icon}.png`;
+    document.querySelector(
+      ".weather__icon img"
+    ).src = `https://raw.githubusercontent.com/yuvraaaj/openweathermap-api-icons/master/icons/${icon}.png`;
     document.querySelector(".weather__city").textContent = city_name;
     document.querySelector(
       ".weather__temperature"

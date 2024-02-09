@@ -109,13 +109,12 @@ if ($_SERVER["REQUEST_METHOD"] === "GET" && isset($_GET["city"])) {
                     "city_name" => $existingWeatherData["city_name"],
                     "temperature" => $existingWeatherData["temperature"],
                     "description" => $existingWeatherData["description"],
-                    "timezone" => $existingWeatherData["timezone"],
+                    "data_stored_hour" => $existingWeatherData["data_stored_hour"],
                     "humidity" => $existingWeatherData["humidity"],
                     "wind" => $existingWeatherData["wind"],
                     "pressure" => $existingWeatherData["pressure"],
                     "weather_date" => $existingWeatherData["weather_date"],
                     "icon" => $existingWeatherData["icon"],
-                    "data_stored_hour" => $existingWeatherData["data_stored_hour"]
                 ],
                 "historical_weather" => $historyData
             ];
@@ -137,13 +136,12 @@ if ($_SERVER["REQUEST_METHOD"] === "GET" && isset($_GET["city"])) {
                             "city_name" => $storedData["city_name"],
                             "temperature" => $storedData["temperature"],
                             "description" => $storedData["description"],
-                            "timezone" => $storedData["timezone"],
+                            "data_stored_hour" => $existingWeatherData["data_stored_hour"],
                             "humidity" => $storedData["humidity"],
                             "wind" => $storedData["wind"],
                             "pressure" => $storedData["pressure"],
                             "weather_date" => $storedData["weather_date"],
                             "icon" => $storedData["icon"],
-                            "data_stored_hour" => $storedData["data_stored_hour"]
                         ],
                         "historical_weather" => $historyData
                     ];
@@ -170,13 +168,12 @@ if ($_SERVER["REQUEST_METHOD"] === "GET" && isset($_GET["city"])) {
                         "city_name" => $storedData["city_name"],
                         "temperature" => $storedData["temperature"],
                         "description" => $storedData["description"],
-                        "timezone" => $storedData["timezone"],
+                        "data_stored_hour" => $existingWeatherData["data_stored_hour"],
                         "humidity" => $storedData["humidity"],
                         "wind" => $storedData["wind"],
                         "pressure" => $storedData["pressure"],
                         "weather_date" => $storedData["weather_date"],
                         "icon" => $storedData["icon"],
-                        "data_stored_hour" => $storedData["data_stored_hour"]
                     ],
                     "historical_weather" => $historyData
                 ];
