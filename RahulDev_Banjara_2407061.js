@@ -29,10 +29,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
       } else {
         const response = await fetch(
-          `http://localhost/old-weather-app/RahulDev_Banjara_2407061.php?city=${encodeURIComponent(
-            city
-          )}`
-        );
+          `http://localhost/old-weather-app/RahulDev_Banjara_2407061.php?city=${city}`);
         const data = await response.json();
 
         if (data.status === "success") {
