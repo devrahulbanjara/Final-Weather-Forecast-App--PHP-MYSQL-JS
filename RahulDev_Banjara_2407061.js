@@ -21,7 +21,11 @@ document.addEventListener("DOMContentLoaded", () => {
     try {
       const storedData = JSON.parse(localStorage.getItem(city));
 
-      if (storedData && isToday(storedData.current_weather.weather_date) && timediff(storedData.current_weather.data_stored_hour)) {
+      if (
+        storedData &&
+        isToday(storedData.current_weather.weather_date) &&
+        timediff(storedData.current_weather.data_stored_hour)
+      ) {
         updateCurrentWeatherUI(storedData.current_weather);
         console.log(`Shown ${city}'s data from local storage.`);
         updateHistoricalWeatherUI(storedData.historical_weather);
@@ -50,13 +54,14 @@ document.addEventListener("DOMContentLoaded", () => {
   function timediff(datainserthours) {
     const now = new Date();
     const currentHour = now.getHours();
-    console.log("Current hour: " + currentHour);
-    if(currentHour-datainserthours < 2){
-      console.log("True bhai true")
+    // console.log("Current hour: " + currentHour);
+    if (currentHour - datainserthours < 2) {
+      // console.log("True bhai true");
       return true;
+    } else {
+      // console.log("False bhai true");
+      return false;
     }
-    else{console.log("False bhai true")
-    return false;}
   }
 
   function isToday(dateString) {
