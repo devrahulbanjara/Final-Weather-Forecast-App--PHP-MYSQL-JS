@@ -3,6 +3,7 @@
 header("Access-Control-Allow-Origin: https://errors.infinityfree.net");
 header("Access-Control-Allow-Methods: GET");
 header("Access-Control-Allow-Headers: Content-Type");
+
 function fetchWeatherDataFromAPI($city)
 {
     $apiKey = "145c5f5cc7b6719079c76a215871e298";
@@ -52,8 +53,6 @@ function getHistoricalWeatherData($conn, $city)
     return $historyData;
 }
 
-
-
 function updateDatabaseWithAPIData($conn, $city, $apiData, $currentHourInNepal)
 {
     $todate = date("Y-m-d", $apiData["dt"]);
@@ -81,7 +80,6 @@ function insertDataIntoDatabase($conn, $city, $apiData, $currentHourInNepal)
     $conn->query($insertQuery);
 }
 
-
 if ($_SERVER["REQUEST_METHOD"] === "GET" && isset($_GET["city"])) {
     $city = $_GET["city"];
 
@@ -94,13 +92,10 @@ if ($_SERVER["REQUEST_METHOD"] === "GET" && isset($_GET["city"])) {
 
     $existingWeatherData = getWeatherDataFromDatabase($conn, $city);
 
-
     //check if city exists in the database
     if ($existingWeatherData) {
         $dataInsertHour = $existingWeatherData["data_stored_hour"];
         $hourDifference = $currentHourInNepal - $dataInsertHour;
-
-
 
         //if exists in the database , check if the data is one hour or less old , display directly
         if ($hourDifference <= 1) {
@@ -125,9 +120,7 @@ if ($_SERVER["REQUEST_METHOD"] === "GET" && isset($_GET["city"])) {
 
             //if the data is more than 1 hour old fetch from openweatherapi and store in DB and display it           
         } else {
-
             $apiData = fetchWeatherDataFromAPI($city);
-
             if ($apiData) {
                 updateDatabaseWithAPIData($conn, $city, $apiData, $currentHourInNepal);
                 $storedData = getWeatherDataFromDatabase($conn, $city);
@@ -140,7 +133,7 @@ if ($_SERVER["REQUEST_METHOD"] === "GET" && isset($_GET["city"])) {
                             "city_name" => $storedData["city_name"],
                             "temperature" => $storedData["temperature"],
                             "description" => $storedData["description"],
-                            "data_stored_hour" => $existingWeatherData["data_stored_hour"],
+                            "data_stored_hour" => $storedData["data_stored_hour"], // Corrected line
                             "humidity" => $storedData["humidity"],
                             "wind" => $storedData["wind"],
                             "pressure" => $storedData["pressure"],
@@ -154,11 +147,8 @@ if ($_SERVER["REQUEST_METHOD"] === "GET" && isset($_GET["city"])) {
                     $response_data = ["status" => "error", "message" => "Failed to retrieve stored data from the database"];
                 }
             }
-
         }
-
-
-        //the city doesnt exist in the database , add from openweatherapi to database and display it
+    //the city doesn't exist in the database, add from openweatherapi to database and display it
     } else {
         $apiData = fetchWeatherDataFromAPI($city);
         if ($apiData) {
@@ -173,7 +163,7 @@ if ($_SERVER["REQUEST_METHOD"] === "GET" && isset($_GET["city"])) {
                         "city_name" => $storedData["city_name"],
                         "temperature" => $storedData["temperature"],
                         "description" => $storedData["description"],
-                        "data_stored_hour" => $storedData["data_stored_hour"], // This line triggers the warning
+                        "data_stored_hour" => $storedData["data_stored_hour"],
                         "humidity" => $storedData["humidity"],
                         "wind" => $storedData["wind"],
                         "pressure" => $storedData["pressure"],
@@ -181,7 +171,6 @@ if ($_SERVER["REQUEST_METHOD"] === "GET" && isset($_GET["city"])) {
                         "icon" => $storedData["icon"],
                         "country" => $storedData["country"],
                     ],
-
                     "historical_weather" => $historyData
                 ];
             } else {
