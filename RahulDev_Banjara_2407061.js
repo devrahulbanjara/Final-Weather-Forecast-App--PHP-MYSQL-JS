@@ -16,6 +16,11 @@ document.addEventListener("DOMContentLoaded", () => {
     }
   });
 
+
+
+
+
+
   async function fetchWeatherData(city) {
     cityInputField.value = "";
     try {
@@ -50,11 +55,20 @@ document.addEventListener("DOMContentLoaded", () => {
     }
   }
 
+
+
+
+
+
   function timediff(datastorehours) {
     const now = new Date();
     const currentHour = now.getHours();
     return (currentHour - datastorehours) < 2;
   }
+
+
+
+
 
   function isToday(dateString) {
     const today = new Date();
@@ -65,6 +79,11 @@ document.addEventListener("DOMContentLoaded", () => {
       date.getFullYear() === today.getFullYear()
     );
   }
+
+
+
+
+
 
   function updateCurrentWeatherUI(currentWeather) {
     const {
@@ -107,6 +126,11 @@ document.addEventListener("DOMContentLoaded", () => {
       ".weather__date"
     ).textContent = `Date: ${weather_date}`;
   }
+
+
+
+
+
 
   function updateHistoricalWeatherUI(historicalWeather) {
     const pastWeatherDiv = document.querySelector(".weather-pastdata");
