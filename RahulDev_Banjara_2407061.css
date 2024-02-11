@@ -208,6 +208,10 @@ input::placeholder {
   max-width: 170px;
 }
 
+div.weather-condition{
+  font-size: 15px;
+}
+
 @media (max-width: 936px) {
   .weather-pastdata {
     flex-wrap: wrap;
