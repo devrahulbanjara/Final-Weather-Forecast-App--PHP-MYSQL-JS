@@ -56,7 +56,7 @@ function getHistoricalWeatherData($conn, $city)
 function updateDatabaseWithAPIData($conn, $city, $apiData, $currentHourInNepal)
 {
     $todate = date("Y-m-d", $apiData["dt"]);
-    $country = $apiData["sys"]["country"]; // Retrieve country code from API response
+    $country = $apiData["sys"]["country"];
     $updateQuery = "UPDATE weather_details SET 
                 temperature='{$apiData["main"]["temp"]}', 
                 description='{$apiData["weather"][0]["description"]}', 
@@ -74,7 +74,7 @@ function updateDatabaseWithAPIData($conn, $city, $apiData, $currentHourInNepal)
 function insertDataIntoDatabase($conn, $city, $apiData, $currentHourInNepal)
 {
     $today = date("Y-m-d", $apiData["dt"]);
-    $country = $apiData["sys"]["country"]; // Retrieve country code from API response
+    $country = $apiData["sys"]["country"];
     $insertQuery = "INSERT INTO weather_details (city_name, temperature, description, timezone, humidity, wind, pressure, icon, weather_date, data_stored_hour, country)
                     VALUES ('$city', '{$apiData["main"]["temp"]}', '{$apiData["weather"][0]["description"]}', '{$apiData["timezone"]}', '{$apiData["main"]["humidity"]}', '{$apiData["wind"]["speed"]}', '{$apiData["main"]["pressure"]}', '{$apiData["weather"][0]["icon"]}', '$today', '{$currentHourInNepal}', '{$country}')";
     $conn->query($insertQuery);
