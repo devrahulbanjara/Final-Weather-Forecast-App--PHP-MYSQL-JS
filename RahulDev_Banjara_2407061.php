@@ -21,7 +21,7 @@ function fetchWeatherDataFromAPI($city)
 
 function getCurrentTimestampInHours()
 {
-    return date("H") + 4;
+    return date("H") + round(4.5);
 }
 
 function getWeatherDataFromDatabase($conn, $city)
