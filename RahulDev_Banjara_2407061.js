@@ -1,5 +1,6 @@
 const searchBtn = document.querySelector(".fa-solid.fa-magnifying-glass");
 const cityInputField = document.querySelector(".weather__searchform");
+
 document.addEventListener("DOMContentLoaded", () => {
   fetchWeatherData("Etawah");
 });
@@ -44,15 +45,15 @@ async function fetchWeatherData(city) {
   try {
     const storedData = JSON.parse(localStorage.getItem(city));
 
-    if (
-      storedData &&
-      isToday(storedData.current_weather.weather_date) &&
-      timediff(parseInt(storedData.current_weather.data_stored_hour))
-    ) {
+    if (storedData &&isToday(storedData.current_weather.weather_date) &&
+    timediff(parseInt(storedData.current_weather.data_stored_hour))) 
+    {
       updateCurrentWeatherUI(storedData.current_weather);
       updateHistoricalWeatherUI(storedData.historical_weather);
       console.log(`Shown ${city}'s data from local storage.`);
-    } else {
+    }
+     else 
+     {
       const response = await fetch(`http://localhost/old-weather-app/RahulDev_Banjara_2407061.php?city=${city}`);
       const data = await response.json();
 
