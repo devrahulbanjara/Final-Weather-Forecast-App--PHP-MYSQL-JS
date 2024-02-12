@@ -23,11 +23,22 @@ cityInputField.addEventListener("keyup", (event) => {
 
 function timediff(datastorehours) {
   const now = new Date();
-  const currentHour = now.getHours();
-  console.log("The current data was stored in this time in database: ",datastorehours)
-  console.log("current local time of my host is : ",currentHour)
-  return currentHour - datastorehours < 8;
+  const kathmanduOffset = 5.75;
+  const kathmanduTime = new Date(now.getTime() + kathmanduOffset * 3600);
+  const currentHour = kathmanduTime.getHours();
+  const currentMinutes = kathmanduTime.getMinutes();
+  const timeDifference = currentHour - datastorehours;
+  console.log("--------|--------------|-----------")
+  console.log("The time when the data was stored in the database:", datastorehours);
+  console.log("The current hour in Kathmandu:", currentHour);
+  console.log("The current minute in Kathmandu:", currentMinutes);
+  console.log(`The data is just ${timeDifference} hour(s) old.`);
+  console.log("--------|--------------|-----------")
+
+  return timeDifference < 8;
 }
+
+
 
 function isToday(dateString) {
   const today = new Date();
@@ -61,7 +72,7 @@ async function fetchWeatherData(city) {
         localStorage.setItem(city, JSON.stringify(data));
         updateCurrentWeatherUI(data.current_weather);
         updateHistoricalWeatherUI(data.historical_weather);
-        console.log(`Stored ${city}'s data in local storage from Database.`);
+        console.log(`So, stored ${city}'s data in local storage from Database. Showing from local storage.`);
       } else {
         alert(`Error: ${data.message}`);
       }

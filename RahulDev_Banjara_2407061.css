@@ -9,6 +9,7 @@
 
 body {
   background-color: #4c5269;
+  zoom:90%;
 }
 
 .title {
@@ -209,7 +210,7 @@ input::placeholder {
 }
 
 div.weather-condition{
-  font-size: 15px;
+  font-size: 14px;
 }
 
 @media (max-width: 936px) {
