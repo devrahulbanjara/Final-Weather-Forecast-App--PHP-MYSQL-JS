@@ -23,6 +23,8 @@ cityInputField.addEventListener("keyup", (event) => {
 function timediff(datastorehours) {
   const now = new Date();
   const currentHour = now.getHours();
+  console.log("The current data was stored in this time in database: ",datastorehours)
+  console.log("current local time of my host is : ",currentHour)
   return currentHour - datastorehours < 8;
 }
 
@@ -45,7 +47,7 @@ async function fetchWeatherData(city) {
     if (
       storedData &&
       isToday(storedData.current_weather.weather_date) &&
-      timediff(storedData.current_weather.data_stored_hour)
+      timediff(parseInt(storedData.current_weather.data_stored_hour))
     ) {
       updateCurrentWeatherUI(storedData.current_weather);
       updateHistoricalWeatherUI(storedData.historical_weather);

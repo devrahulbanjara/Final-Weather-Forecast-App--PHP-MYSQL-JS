@@ -21,8 +21,12 @@ function fetchWeatherDataFromAPI($city)
 
 function getCurrentTimestampInHours()
 {
-    return date("H") + round(4.5);
+    $current_utc_time = gmdate("H:i");
+    $kathmandu_time_difference = 5.75;
+    $kathmandu_time = strtotime($current_utc_time) + ($kathmandu_time_difference * 3600);
+    return date("H", $kathmandu_time);
 }
+
 
 function getWeatherDataFromDatabase($conn, $city)
 {
@@ -97,8 +101,8 @@ if ($_SERVER["REQUEST_METHOD"] === "GET" && isset($_GET["city"])) {
         $dataInsertHour = $existingWeatherData["data_stored_hour"];
         $hourDifference = $currentHourInNepal - $dataInsertHour;
 
-        //if exists in the database , check if the data is one hour or less old , display directly
-        if ($hourDifference <= 1) {
+        //if exists in the database , check if the data is three hour or less old , display directly
+        if ($hourDifference <= 3) {
             $historyData = getHistoricalWeatherData($conn, $city);
 
             $response_data = [
@@ -118,7 +122,7 @@ if ($_SERVER["REQUEST_METHOD"] === "GET" && isset($_GET["city"])) {
                 "historical_weather" => $historyData
             ];
 
-            //if the data is more than 1 hour old fetch from openweatherapi and store in DB and display it           
+            //if the data is more than 3 hour old fetch from openweatherapi and store in DB and display it           
         } else {
             $apiData = fetchWeatherDataFromAPI($city);
             if ($apiData) {
