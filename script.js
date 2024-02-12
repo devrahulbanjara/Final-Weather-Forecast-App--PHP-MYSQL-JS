@@ -65,7 +65,7 @@ async function fetchWeatherData(city) {
     }
      else 
      {
-      const response = await fetch(`http://localhost/old-weather-app/RahulDev_Banjara_2407061.php?city=${city}`);
+      const response = await fetch(`http://localhost/old-weather-app/main.php?city=${city}`);
       const data = await response.json();
 
       if (data.status === "success") {
