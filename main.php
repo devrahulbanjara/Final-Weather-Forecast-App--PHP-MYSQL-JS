@@ -30,7 +30,10 @@ function getCurrentTimestampInHours()
 
 function getWeatherDataFromDatabase($conn, $city)
 {
-    $today = date("Y-m-d");
+    date_default_timezone_set('Asia/Kathmandu');
+    $todayString = new DateTime();
+    $today = $todayString->format('Y-m-d');
+    
     $existingQuery = "SELECT * FROM weather_details WHERE city_name='$city' AND DATE(weather_date) = '$today' ORDER BY weather_date DESC LIMIT 1";
     $result = $conn->query($existingQuery);
 
@@ -59,7 +62,10 @@ function getHistoricalWeatherData($conn, $city)
 
 function updateDatabaseWithAPIData($conn, $city, $apiData, $currentHourInNepal)
 {
-    $todate = date("Y-m-d", $apiData["dt"]);
+    date_default_timezone_set('Asia/Kathmandu');
+    $todayString = new DateTime();
+    $todate = $todayString->format('Y-m-d');
+    
     $country = $apiData["sys"]["country"];
     $updateQuery = "UPDATE weather_details SET 
                 temperature='{$apiData["main"]["temp"]}', 
@@ -77,7 +83,11 @@ function updateDatabaseWithAPIData($conn, $city, $apiData, $currentHourInNepal)
 
 function insertDataIntoDatabase($conn, $city, $apiData, $currentHourInNepal)
 {
-    $today = date("Y-m-d", $apiData["dt"]);
+    date_default_timezone_set('Asia/Kathmandu');
+    $todayString = new DateTime();
+    $today = $todayString->format('Y-m-d');
+
+
     $country = $apiData["sys"]["country"];
     $insertQuery = "INSERT INTO weather_details (city_name, temperature, description, timezone, humidity, wind, pressure, icon, weather_date, data_stored_hour, country)
                     VALUES ('$city', '{$apiData["main"]["temp"]}', '{$apiData["weather"][0]["description"]}', '{$apiData["timezone"]}', '{$apiData["main"]["humidity"]}', '{$apiData["wind"]["speed"]}', '{$apiData["main"]["pressure"]}', '{$apiData["weather"][0]["icon"]}', '$today', '{$currentHourInNepal}', '{$country}')";
@@ -152,7 +162,7 @@ if ($_SERVER["REQUEST_METHOD"] === "GET" && isset($_GET["city"])) {
                 }
             }
         }
-    //the city doesn't exist in the database, add from openweatherapi to database and display it
+        //the city doesn't exist in the database, add from openweatherapi to database and display it
     } else {
         $apiData = fetchWeatherDataFromAPI($city);
         if ($apiData) {
