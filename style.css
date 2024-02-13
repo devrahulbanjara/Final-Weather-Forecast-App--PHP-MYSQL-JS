@@ -221,3 +221,84 @@ footer {
   width: 100%;
 }
 
+@media only screen and (max-width: 600px) {
+  body {
+    zoom: 80%;
+  }
+
+  .title {
+    font-size: 1.4rem;
+  }
+
+  .container {
+    width: 90%;
+    padding: 1rem;
+  }
+
+  .weather__body {
+    margin-top: 1rem;
+  }
+
+  .weather__icon img {
+    width: 70px;
+  }
+
+  .weather__temperature {
+    font-size: 2.8em;
+    margin-left: 10px;
+  }
+
+  .weather__city {
+    font-size: 28px;
+  }
+
+  .weather__country {
+    font-size: 1.1em;
+  }
+
+  .weather__card {
+    width: 45%;
+    margin:4px;
+  }
+
+  .weather__card {
+    padding: 0.5rem;
+  }
+
+  .day {
+    width: 90%;
+    max-width: none;
+  }
+
+  .day {
+    margin: 0 auto 1rem;
+  }
+
+  .weather__forecast {
+    font-size: 1.1rem;
+  }
+
+  .weather__card p {
+    font-size: 11px;
+  }
+
+  footer {
+    padding: 5px;
+    font-size: 0.8rem;
+  }
+
+  .weather-pastdata {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-top: 1rem;
+  }
+
+  .day {
+    width: 100%;
+    max-width: 200px; /* Double the width of current divs */
+    margin-bottom: 1rem;
+  }
+}
+
+

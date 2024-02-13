@@ -116,13 +116,13 @@ function updateCurrentWeatherUI(currentWeather) {
     ".weather__temperature"
   ).textContent = `${roundedTemperature}°`;
   document.querySelector(".weather__forecast").textContent = description;
-  document.querySelector(".weather__wind").textContent = `Wind: ${wind} m/s`;
+  document.querySelector(".weather__wind").textContent = `${wind} m/s`;
   document.querySelector(
     ".weather__pressure"
-  ).textContent = `Pressure: ${pressure} hPa`;
+  ).textContent = `${pressure} hPa`;
   document.querySelector(
     ".weather__humidity"
-  ).textContent = `Humidity: ${humidity}%`;
+  ).textContent = `${humidity}%`;
   document.querySelector(
     ".weather__date"
   ).textContent = `Date: ${weather_date}`;
