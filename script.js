@@ -70,8 +70,9 @@ async function fetchWeatherData(city) {
 
       if (data.status === "success") {
         localStorage.setItem(city, JSON.stringify(data));
-        updateCurrentWeatherUI(data.current_weather);
-        updateHistoricalWeatherUI(data.historical_weather);
+        const recentdata = JSON.parse(localStorage.getItem(city));
+        updateCurrentWeatherUI(recentdata.current_weather);
+        updateHistoricalWeatherUI(recentdata.historical_weather);
         console.log(`So, stored ${city}'s data in local storage from Database. Showing from local storage.`);
       } else {
         alert(`Error: ${data.message}`);
