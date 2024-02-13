@@ -125,7 +125,7 @@ function updateCurrentWeatherUI(currentWeather) {
   ).textContent = `${humidity}%`;
   document.querySelector(
     ".weather__date"
-  ).textContent = `Date: ${weather_date}`;
+  ).textContent = `${weather_date}`;
 }
 
 function updateHistoricalWeatherUI(historicalWeather) {

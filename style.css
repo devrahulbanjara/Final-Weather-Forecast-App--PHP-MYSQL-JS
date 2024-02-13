@@ -258,7 +258,7 @@ footer {
 
   .weather__card {
     width: 45%;
-    margin:4px;
+    margin: 4px; /* Add margin to separate cards */
   }
 
   .weather__card {
@@ -266,12 +266,9 @@ footer {
   }
 
   .day {
-    width: 90%;
-    max-width: none;
-  }
-
-  .day {
-    margin: 0 auto 1rem;
+    width: calc(50% - 8px); /* Calculate width to accommodate maximum 2 days per line */
+    max-width: 200px;
+    margin-bottom: 1rem;
   }
 
   .weather__forecast {
@@ -296,9 +293,21 @@ footer {
 
   .day {
     width: 100%;
-    max-width: 200px; /* Double the width of current divs */
+    max-width: 200px;
     margin-bottom: 1rem;
   }
+
+  input.weather__searchform {
+    width: 60%;
+    font-size: 14px;
+  }
+
+  .weather__date {
+    font-size: 13px;
+    width:25%;
+  }
+
 }
+
 
 
