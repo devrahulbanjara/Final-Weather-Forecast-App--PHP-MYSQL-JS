@@ -213,17 +213,6 @@ div.weather-condition{
   font-size: 14px;
 }
 
-@media (max-width: 936px) {
-  .weather-pastdata {
-    flex-wrap: wrap;
-  }
-
-  .day {
-    width: 30%;
-    margin-bottom: 1rem;
-  }
-}
-
 footer {
   color: #ffffff;
   text-align: center;
@@ -232,34 +221,3 @@ footer {
   width: 100%;
 }
 
-@media (max-width: 936px) {
-  .container {
-    width: 90%;
-  }
-
-  .weather__header {
-    flex-direction: column;
-  }
-
-  .weather__units {
-    margin-top: 1rem;
-  }
-}
-
-@media (max-width: 400px) {
-  .weather__info {
-    grid-template-columns: none;
-  }
-
-  .weather__card i {
-    font-size: 0.8rem;
-  }
-
-  .weather__card p {
-    font-size: 7px;
-  }
-
-  .weather-pastdata .day {
-    font-size: 7px;
-  }
-}
