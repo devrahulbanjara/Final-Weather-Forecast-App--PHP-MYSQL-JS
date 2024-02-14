@@ -311,3 +311,18 @@ footer {
 
 
 
+@media (max-width: 1900px) {
+  *{
+    zoom:95%;
+  }
+  div.weather-condition{
+  font-size: 15px;
+  }
+  .day > .day-name {
+  font-size: 0.9rem;
+}
+  .day{
+    max-height: 155px;
+  }
+}
+
