@@ -257,7 +257,7 @@ footer {
 
   .weather__card {
     width: 45%;
-    margin: 4px; /* Add margin to separate cards */
+    margin: 4px;
   }
 
   .weather__card {
@@ -265,7 +265,7 @@ footer {
   }
 
   .day {
-    width: calc(50% - 8px); /* Calculate width to accommodate maximum 2 days per line */
+    width: calc(50% - 8px);
     max-width: 200px;
     margin-bottom: 1rem;
   }
@@ -294,6 +294,7 @@ footer {
     width: 100%;
     max-width: 200px;
     margin-bottom: 1rem;
+    min-height: 170px;
   }
 
   input.weather__searchform {
