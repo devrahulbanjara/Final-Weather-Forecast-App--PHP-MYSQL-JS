@@ -9,7 +9,10 @@
 
 body {
   background-color: #4c5269;
+  background-image: url("https://images.pexels.com/photos/531767/pexels-photo-531767.jpeg?cs=srgb&dl=pexels-pixabay-531767.jpg&fm=jpg");
   zoom:90%;
+  background-size: cover;
+  background-repeat: no-repeat;
 }
 
 .title {
@@ -24,18 +27,18 @@ body {
 }
 
 .container {
-  background-color: rgb(49, 47, 44);
+  background-color: rgba(65,141,199,0.5);
   color: #ffffff;
   padding: 2rem;
   width: 60%;
   margin: 3rem auto;
   border-radius: 10px;
-  border: 2px solid #d2d2d2;
+  border: 0.2px solid #565454;
   transition: 0.3s ease-in-out;
 }
 
 .container:hover {
-  box-shadow: 0px 0px 20px rgba(255, 255, 255, 0.5);
+  box-shadow: 0px 0px 20px rgba(0, 0, 0, 0.5);
 }
 
 .weather__header {
@@ -46,7 +49,7 @@ body {
 
 input {
   border: none;
-  background: rgba(76, 82, 105, 0.6);
+  background: rgba(39, 52, 77, 0.313);
   outline: none;
   color: #fff;
   padding: 0.5rem 2.5rem;
@@ -54,7 +57,7 @@ input {
 }
 
 input:hover {
-  background: rgba(95, 103, 133, 0.6);
+  background: rgba(41, 42, 49, 0.6);
 }
 
 input::placeholder {
@@ -73,20 +76,15 @@ input::placeholder {
   cursor: pointer;
 }
 
-.weather__search i:hover {
-  color: rgba(95, 103, 133, 0.8);
-}
 
-.weather__date,
-.weather__time {
+.weather__date{
   margin-bottom: 0rem;
   font-size: 17px;
   transition: 0.2s ease-in-out;
 }
 
-.weather__time:hover,
 .weather__date:hover {
-  text-shadow: 0px 0px 10px rgba(255, 255, 255, 0.637);
+  text-shadow: 0px 0px 10px rgba(41, 42, 49, 0.6);
 }
 
 .weather__body {
@@ -132,15 +130,16 @@ input::placeholder {
   margin-top: 15px;
   display: flex;
   align-items: center;
-  background: rgba(76, 82, 105, 0.8);
+  background: rgba(39, 52, 77, 0.313);
   padding: 1rem;
+  border: 0.2px solid #565454;
   border-radius: 10px;
   width: 20%;
   transition: 0.3s ease-in-out;
 }
 
 .weather__card:hover {
-  background: rgba(95, 103, 133, 0.8);
+  background: rgba(41, 42, 49, 0.6);
   transform: scale(1.05);
 }
 
@@ -170,7 +169,7 @@ input::placeholder {
   align-items: center;
   margin-left: 5px;
   margin-right: 5px;
-  background: rgba(76, 82, 105, 0.8);
+  background: rgba(39, 52, 77, 0.313);
   border-radius: 10px;
   width: 12%;
   padding: 1rem;
@@ -178,7 +177,7 @@ input::placeholder {
 }
 
 .day:hover {
-  background: rgba(76, 82, 105, 0.8);
+  background: rgba(41, 42, 49, 0.6);
   transform: scale(1.05);
 }
 
@@ -214,7 +213,7 @@ div.weather-condition{
 }
 
 footer {
-  color: #ffffff;
+  color: #000000;
   text-align: center;
   padding: 10px;
   bottom: 0;
