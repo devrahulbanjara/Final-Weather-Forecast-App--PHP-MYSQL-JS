@@ -96,7 +96,7 @@ function insertDataIntoDatabase($conn, $city, $apiData, $currentHourInNepal)
 if ($_SERVER["REQUEST_METHOD"] === "GET" && isset($_GET["city"])) {
     $city = $_GET["city"];
 
-    $conn = new mysqli("mysql2.serv00.com", "m3001_devrahul", "Apple@12", "m3001_weather");
+    $conn = new mysqli("localhost", "root", "", "weather");
     if ($conn->connect_error) {
         die("Connection failed: " . $conn->connect_error);
     }
