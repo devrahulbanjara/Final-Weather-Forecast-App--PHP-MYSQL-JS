@@ -9,15 +9,14 @@ searchBtn.addEventListener("click", () => {
   fetchWeatherData(cityInputField.value.trim() || "Etawah");
 });
 
-document
-  .querySelector(".title")
-  .addEventListener("click", () => fetchWeatherData("Etawah"));
+document.querySelector(".title").addEventListener("click", () => fetchWeatherData("Etawah"));
 
 cityInputField.addEventListener("keyup", (event) => {
   if (event.key === "Enter") {
     fetchWeatherData(cityInputField.value.trim() || "Etawah");
   }
 });
+
 
 
 
@@ -40,6 +39,7 @@ function timediff(datastorehours) {
 
 
 
+
 function isToday(dateString) {
   const today = new Date();
   const date = new Date(dateString);
@@ -51,38 +51,43 @@ function isToday(dateString) {
 }
 
 
+
+
 async function fetchWeatherData(city) {
   cityInputField.value = "";
   try {
     const storedData = JSON.parse(localStorage.getItem(city));
-
+    //search for data in local storage first  
     if (storedData &&isToday(storedData.current_weather.weather_date) &&
-    timediff(parseInt(storedData.current_weather.data_stored_hour))) 
-    {
-      updateCurrentWeatherUI(storedData.current_weather);
-      updateHistoricalWeatherUI(storedData.historical_weather);
-      console.log(`Shown ${city}'s data from local storage.`);
+        timediff(parseInt(storedData.current_weather.data_stored_hour))){
+        updateCurrentWeatherUI(storedData.current_weather);
+        updateHistoricalWeatherUI(storedData.historical_weather);
+        console.log(`Shown ${city}'s data from local storage.`);
     }
-     else 
-     {
-      const response = await fetch(`http://localhost/Prototype3/main.php?city=${city}`);
-      const data = await response.json();
+    //fetch the data from php if not available in local storage
+    else
+    {
+        const response = await fetch(`http://localhost/Prototype3/main.php?city=${city}`);
+        const data = await response.json();
 
-      if (data.status === "success") {
-        localStorage.setItem(city, JSON.stringify(data));
-        const recentdata = JSON.parse(localStorage.getItem(city));
-        updateCurrentWeatherUI(recentdata.current_weather);
-        updateHistoricalWeatherUI(recentdata.historical_weather);
-        console.log(`So, stored ${city}'s data in local storage from Database. Showing from local storage.`);
-      } else {
+        if (data.status === "success") {
+          localStorage.setItem(city, JSON.stringify(data));
+          const recentdata = JSON.parse(localStorage.getItem(city));
+          updateCurrentWeatherUI(recentdata.current_weather);
+          updateHistoricalWeatherUI(recentdata.historical_weather);
+          console.log(`So, stored ${city}'s data in local storage from Database. Showing from local storage.`);
+        } else {
+          //if backend gives any error
         alert(`Error: ${data.message}`);
-      }
+        }
     }
   } catch (error) {
     console.error("Error fetching data:", error);
     alert(`An error occurred while fetching data for ${city}.`);
   }
 }
+
+
 
 
 
@@ -99,40 +104,30 @@ function updateCurrentWeatherUI(currentWeather) {
     icon,
   } = currentWeather;
 
-  const roundedTemperature = Math.round(temperature);
-
   function convertCountryCode(country) {
     let regionNames = new Intl.DisplayNames(["en"], { type: "region" });
     return regionNames.of(country);
   }
 
-  document.querySelector(
-    ".weather__icon img"
-  ).src = `https://raw.githubusercontent.com/yuvraaaj/openweathermap-api-icons/master/icons/${icon}.png`;
+  const roundedTemperature = Math.round(temperature);
+  document.querySelector(".weather__icon img").src = `https://raw.githubusercontent.com/yuvraaaj/openweathermap-api-icons/master/icons/${icon}.png`;
   document.querySelector(".weather__city").textContent = city_name;
-  document.querySelector(".weather__country").textContent =
-    convertCountryCode(country);
-
-  document.querySelector(
-    ".weather__temperature"
-  ).textContent = `${roundedTemperature}°`;
+  document.querySelector(".weather__country").textContent =convertCountryCode(country);
+  document.querySelector(".weather__temperature").textContent = `${roundedTemperature}°`;
   document.querySelector(".weather__forecast").textContent = description;
   document.querySelector(".weather__wind").textContent = `${wind} m/s`;
-  document.querySelector(
-    ".weather__pressure"
-  ).textContent = `${pressure} hPa`;
-  document.querySelector(
-    ".weather__humidity"
-  ).textContent = `${humidity}%`;
-  document.querySelector(
-    ".weather__date"
-  ).textContent = `${weather_date}`;
+  document.querySelector(".weather__pressure").textContent = `${pressure} hPa`;
+  document.querySelector(".weather__humidity").textContent = `${humidity}%`;
+  document.querySelector(".weather__date").textContent = `${weather_date}`;
 }
+
+
+
+
 
 function updateHistoricalWeatherUI(historicalWeather) {
   const pastWeatherDiv = document.querySelector(".weather-pastdata");
   pastWeatherDiv.innerHTML = "";
-
   historicalWeather.forEach((entry, index) => {
     if (index < 7) {
       const iconUrl = `https://raw.githubusercontent.com/yuvraaaj/openweathermap-api-icons/master/icons/${entry.icon}.png`;

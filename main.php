@@ -30,7 +30,7 @@ function getWeatherDataFromDatabase($conn, $city)
     date_default_timezone_set('Asia/Kathmandu');
     $todayString = new DateTime();
     $today = $todayString->format('Y-m-d');
-    //query to return a row of today's date
+    //query to return a row of today's date if available
     $existingQuery = "SELECT * FROM weather_details WHERE city_name='$city' AND DATE(weather_date) = '$today' ORDER BY weather_date DESC LIMIT 1";
     $result = $conn->query($existingQuery);
     return ($result && $result->num_rows > 0) ? $result->fetch_assoc() : false;
