@@ -145,7 +145,7 @@ if ($_SERVER["REQUEST_METHOD"] === "GET" && isset($_GET["city"])) {
                             "city_name" => $storedData["city_name"],
                             "temperature" => $storedData["temperature"],
                             "description" => $storedData["description"],
-                            "data_stored_hour" => $storedData["data_stored_hour"], // Corrected line
+                            "data_stored_hour" => $storedData["data_stored_hour"],
                             "humidity" => $storedData["humidity"],
                             "wind" => $storedData["wind"],
                             "pressure" => $storedData["pressure"],
