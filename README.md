@@ -44,7 +44,7 @@ Follow the steps below to set up and run this project using XAMPP on your local 
    - After creating the database, import the provided SQL file to set up the required tables and data:
      - In phpMyAdmin, select the `weather` database.
      - Go to the "Import" tab.
-     - Click "Choose File" and select the provided SQL file (e.g., `weather.sql`).
+     - Click "Choose File" and select the provided SQL file ('weather_details.sql`).
      - Click "Go" to import the database structure and data.
 
 5. **Access the Application:**
