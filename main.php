@@ -2,7 +2,7 @@
 
 function fetchWeatherDataFromAPI($city)
 {
-    $apiKey = "145c5f5cc7b6719079c76a215871e298";
+    $apiKey = "";
     $apiUrl = "https://api.openweathermap.org/data/2.5/weather?q=$city&appid=$apiKey&units=metric";
 
     $response = file_get_contents($apiUrl);
