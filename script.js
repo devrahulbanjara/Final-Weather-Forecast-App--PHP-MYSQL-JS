@@ -67,7 +67,7 @@ async function fetchWeatherData(city) {
     //fetch the data from php if not available in local storage
     else
     {
-        const response = await fetch(`http://localhost/Prototype3/main.php?city=${city}`);
+        const response = await fetch(`http://localhost/main.php?city=${city}`);
         const data = await response.json();
 
         if (data.status === "success") {
