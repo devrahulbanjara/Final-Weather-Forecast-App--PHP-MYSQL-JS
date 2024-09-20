@@ -7,6 +7,7 @@ Follow the steps below to set up and run this project using XAMPP on your local 
 ### Prerequisites
 
 - XAMPP installed on your machine.
+- An API key from [OpenWeatherMap](https://openweathermap.org/).
 
 ### Steps to Run the Project
 
@@ -40,7 +41,15 @@ Follow the steps below to set up and run this project using XAMPP on your local 
      - `script.js`
      - `main.php`
 
-4. **Create a Database:**
+4. **Get Your OpenWeatherMap API Key:**
+   - Go to the [OpenWeatherMap API website](https://openweathermap.org/api) and sign up or log in.
+   - Get your free API key.
+   - Insert your API key in the `main.php` file where indicated:
+     ```php
+     $apiKey = 'YOUR_API_KEY_HERE';
+     ```
+
+5. **Create a Database:**
    - Start the **Apache** and **MySQL** services using the XAMPP Control Panel:
      - On Linux, run the following command:
        ```bash
@@ -54,14 +63,14 @@ Follow the steps below to set up and run this project using XAMPP on your local 
      ```
    - In phpMyAdmin, create a new database named **`weather`**.
 
-5. **Import the SQL File:**
+6. **Import the SQL File:**
    - After creating the database, import the provided SQL file to set up the required tables and data:
      - In phpMyAdmin, select the `weather` database.
      - Go to the "Import" tab.
      - Click "Choose File" and select the provided SQL file (`weather_details.sql`).
      - Click "Go" to import the database structure and data.
 
-6. **Access the Application:**
+7. **Access the Application:**
    - Ensure that Apache and MySQL servers are running.
    - Open your browser and go to:
      ```
@@ -75,10 +84,11 @@ Follow the steps below to set up and run this project using XAMPP on your local 
   - Apache and MySQL are running in XAMPP.
   - The files are placed in the correct `htdocs` directory.
   - The database is correctly set up and the SQL file is imported without errors.
+  - Your API key is correctly placed in the `main.php` file.
 
 ## Contributing
 
-Contributors are welcome! If you have any suggestions or improvements, feel free to contact me at rdbanjara07@gmail.com or submit a pull request.
+Contributors are welcome! If you have any suggestions or improvements, feel free to submit a pull request or contact me at rdbanjara07@gmail.com.
 
 ## License
 
