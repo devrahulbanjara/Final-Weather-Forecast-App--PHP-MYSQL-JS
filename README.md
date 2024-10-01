@@ -4,6 +4,7 @@
 ![Animate](docs/weather.gif)
 
 </div>
+
 ## Project Setup Instructions
 
 Follow the steps below to set up and run this project using XAMPP on your local machine.
